@@ -55,4 +55,23 @@ class ShipTest < Minitest::Test
     assert_equal 1, cruiser.damage
   end
 
+  def test_whether_destroyer_is_sunken_after_two_hits
+    destroyer  = Ship.new(2)
+    cruiser    = Ship.new(3)
+
+    no_damage  = destroyer.sunken?
+    assert_equal 0, destroyer.damage
+    refute no_damage
+
+    one_hit    = destroyer.sunken?
+    destroyer.hit
+    assert_equal 1, destroyer.damage
+    refute one_hit
+
+    destroyer.hit
+    second_hit = destroyer.sunken?
+    assert_equal 2, destroyer.damage
+    assert_equal true, second_hit
+  end
+
 end

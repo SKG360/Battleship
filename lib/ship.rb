@@ -17,4 +17,10 @@ class Ship
   def hit
     @damage += 1
   end
+
+  def sunken?
+    @damage == @length 
+  end
+
+
 end
