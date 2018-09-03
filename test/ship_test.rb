@@ -17,6 +17,25 @@ class ShipTest < Minitest::Test
     assert_equal 3, cruiser.length
   end
 
+  def test_the_placement_of_a_ship
+    destroyer = Ship.new(2)
+    cruiser   = Ship.new(3)
+
+    destroyer.ship_placement("A1", "A2")
+    cruiser.ship_placement("B1", "B3")
+
+    d_expected_bow   = "A1"
+    c_expected_bow   = "B1"
+    d_expected_stern = "A2"
+    c_expected_stern = "B3"
+
+    assert_equal d_expected_bow, destroyer.head_of_ship
+    assert_equal c_expected_bow, cruiser.head_of_ship
+
+    assert_equal d_expected_stern, destroyer.tail_of_ship
+    assert_equal c_expected_stern, cruiser.tail_of_ship
+  end
+
   def test_the_starting_damage_of_ships
     destroyer = Ship.new(2)
     cruiser   = Ship.new(3)
