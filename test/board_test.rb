@@ -30,4 +30,13 @@ class BoardTest < Minitest::Test
     assert_equal expected, board.unique_space_id
   end
 
+  def test_if_the_board_has_created_spaces
+    board = Board.new(4)
+    expected = [["A1", "A2", "A3", "A4"],
+                ["B1", "B2", "B3", "B4"],
+                ["C1", "C2", "C3", "C4"],
+                ["D1", "D2", "D3", "D4"]]
+    assert_equal expected, board.create_spaces
+  end
+
 end
