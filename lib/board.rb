@@ -3,11 +3,13 @@ require './lib/space'
 class Board
   def initialize(length)
     @length = length
-
   end
 
-  def create_each_space
-    require "pry"; binding.pry
-    space.occupied
+  def row_titles
+    ("A".."D").to_a.shift(@length)
+  end
+
+  def column_titles
+    ("1".."4").to_a.shift(@length)
   end
 end
