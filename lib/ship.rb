@@ -9,7 +9,17 @@ class Ship
     @tail_of_ship = nil
   end
 
+  def ship_placement(bow, stern)
+    @head_of_ship = bow
+    @tail_of_ship = stern
+  end
+
   def hit
     @damage += 1
   end
+
+  def sunken?
+    @damage == @length
+  end
+
 end
