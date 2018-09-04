@@ -19,8 +19,7 @@ class Ship
   end
 
   def sunken?
-    @damage == @length 
+    @damage == @length
   end
-
 
 end
