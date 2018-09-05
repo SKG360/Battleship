@@ -1,4 +1,5 @@
 require './lib/space'
+require './lib/ship'
 
 class Board
   def initialize(length)
@@ -18,15 +19,25 @@ class Board
   def unique_space_id
     row_titles.map do |row|
       column_titles.map do |num|
-        row + num
+        Space.new(row + num)
       end
     end
   end
 
-  def create_spaces
-    unique_space_id.map.with_index do |coordinate, idx|
-      [coordinate[idx], Space.new(coordinate[idx])]
-    end.to_h
+  def place_a_ship(bow, stern, type)
+    type.ship_placement(bow, stern)
+
   end
+
+  def check_if_occupied(type)
+    [*type.head_of_ship..type.tail_of_ship].map.with_index do |coordinate, idx|
+      if coordinate == unique_space_id[0][idx].coordinate
+      unique_space_id[0][idx].occupied = true
+      require "pry"; binding.pry
+      end
+    end
+  end
+
+
 
 end
