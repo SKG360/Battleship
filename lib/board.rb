@@ -32,10 +32,11 @@ class Board
   def check_if_occupied(type)
     [*type.head_of_ship..type.tail_of_ship].map.with_index do |coordinate, idx|
       if coordinate == unique_space_id[0][idx].coordinate
-      unique_space_id[0][idx].occupied = true
+      unique_space_id[0][idx].occupied ^ true
       require "pry"; binding.pry
       end
     end
+
   end
 
 
