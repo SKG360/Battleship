@@ -2,6 +2,7 @@ require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/board'
 require './lib/space'
+require './lib/ship'
 
 class BoardTest < Minitest::Test
   def test_if_it_exists
@@ -23,11 +24,28 @@ class BoardTest < Minitest::Test
 
   def test_if_it_combines_titles_and_columns_labels_as_unique_space_id
     board = Board.new(4)
-    expected = [["A1", "A2", "A3", "A4"],
-                ["B1", "B2", "B3", "B4"],
-                ["C1", "C2", "C3", "C4"],
-                ["D1", "D2", "D3", "D4"]]
-    assert_equal expected, board.unique_space_id
+
+    assert_instance_of Space, board.unique_space_id[0][0]
+    assert_equal "A1",        board.unique_space_id[0][0].coordinate
   end
+
+  def test_the_placement_of_a_ship
+
+    board   = Board.new(4)
+    cruiser = Ship.new(3)
+
+    board.place_a_ship("A1", "A3", cruiser)
+
+    assert_equal "A1", cruiser.head_of_ship
+    assert_equal "A3", cruiser.tail_of_ship
+
+    assert_equal [true, true, true], board.check_if_occupied(cruiser)
+
+    assert board.unique_space_id[0][0].occupied
+    assert board.unique_space_id[0][1].occupied
+    assert board.unique_space_id[0][2].occupied
+  end
+
+
 
 end
