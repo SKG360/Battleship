@@ -1,12 +1,6 @@
-puts "Welcome to BATTLESHIP\n"
-puts "\n"
-puts "Would you like to (p)lay, read the (i)nstructions, or (q)uit?"
-puts ">>"
 
-user_input = gets.chomp
-
-
-  def start_game_selections(user_input)
+class Gameflow
+  def start_game(user_input)
       if user_input == "p"
         #insert gameflow method
       elsif user_input == "i"
@@ -29,3 +23,4 @@ user_input = gets.chomp
   def quit
     puts "Thanks for playing BATTLESHIP."
   end
+end

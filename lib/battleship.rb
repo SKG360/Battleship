@@ -1,5 +1,12 @@
 require './lib/game_flow'
 
-gameflow = Gameflow.new
+puts "Welcome to BATTLESHIP\n"
+puts "\n"
+puts "Would you like to (p)lay, read the (i)nstructions, or (q)uit?"
+puts ">>"
 
-gameflow.launch
+user_input = gets.chomp
+
+game_flow = Gameflow.new
+
+game_flow.start_game(user_input)
