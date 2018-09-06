@@ -46,6 +46,7 @@ class Board
       end
     else puts "Invalid Placement!"
     end
+
   end
 
 end
