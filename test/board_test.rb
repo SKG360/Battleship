@@ -1,3 +1,5 @@
+require 'simplecov'
+SimpleCov.start
 require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/board'
@@ -23,7 +25,6 @@ class BoardTest < Minitest::Test
   end
 
   def test_if_it_combines_titles_and_columns_labels_as_unique_space_id
-
     board = Board.new(4)
 
     assert_instance_of Space, board.space_array[0][0]
@@ -31,7 +32,6 @@ class BoardTest < Minitest::Test
   end
 
   def test_the_horizontal_placement_of_a_ship
-
     board   = Board.new(4)
     cruiser = Ship.new(3)
 
@@ -41,14 +41,13 @@ class BoardTest < Minitest::Test
     assert_equal "A3", cruiser.tail_of_ship
 
     board.place_a_ship("A1", "A3", cruiser)
-    # board.place_a_ship(cruiser)
+
     assert board.space_array[0][0].occupied
     assert board.space_array[0][1].occupied
     assert board.space_array[0][2].occupied
   end
 
   def test_the_vertical_placement_of_a_ship
-
     board   = Board.new(4)
     cruiser = Ship.new(3)
 
@@ -57,14 +56,11 @@ class BoardTest < Minitest::Test
     assert_equal "A1", cruiser.head_of_ship
     assert_equal "C1", cruiser.tail_of_ship
 
-    # board.place_a_ship(cruiser)
     board.place_a_ship("A1", "C1", cruiser)
 
     assert board.space_array[0][0].occupied
     assert board.space_array[1][0].occupied
     assert board.space_array[2][0].occupied
   end
-
-
 
 end

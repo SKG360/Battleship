@@ -2,7 +2,7 @@ require './lib/space'
 require './lib/ship'
 
 class Board
-  attr_reader :space_array
+  attr_reader :space_array, :space_array
   def initialize(length)
     @length = length
     @space_array = creates_spaces
@@ -46,7 +46,6 @@ class Board
       end
     else puts "Invalid Placement!"
     end
-
   end
 
 end

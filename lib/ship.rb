@@ -22,11 +22,4 @@ class Ship
     @damage == @length
   end
 
-  def ship_coordinates
-    #["A1", "A3"] ===> create middle input method ==> ["A1","A2","A3"]
-    #if length == 3
-      #then middle input method
-      
-  end
-
 end

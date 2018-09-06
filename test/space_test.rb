@@ -1,3 +1,5 @@
+require 'simplecov'
+SimpleCov.start
 require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/space'
@@ -12,9 +14,5 @@ class SpaceTest < Minitest::Test
     space = Space.new("A1")
     assert_equal "A1", space.coordinate
   end
-
-  # board[0][0] == "A1".chars
-  #
-  # board = {["A1", "A2"]}
 
 end
