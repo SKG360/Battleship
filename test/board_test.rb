@@ -23,27 +23,46 @@ class BoardTest < Minitest::Test
   end
 
   def test_if_it_combines_titles_and_columns_labels_as_unique_space_id
+
     board = Board.new(4)
 
-    assert_instance_of Space, board.unique_space_id[0][0]
-    assert_equal "A1",        board.unique_space_id[0][0].coordinate
+    assert_instance_of Space, board.space_array[0][0]
+    assert_equal "A1",        board.space_array[0][0].coordinate
   end
 
-  def test_the_placement_of_a_ship
+  def test_the_horizontal_placement_of_a_ship
 
     board   = Board.new(4)
     cruiser = Ship.new(3)
 
-    board.place_a_ship("A1", "A3", cruiser)
+    cruiser.ship_placement("A1", "A3")
 
     assert_equal "A1", cruiser.head_of_ship
     assert_equal "A3", cruiser.tail_of_ship
 
-    assert_equal [true, true, true], board.check_if_occupied(cruiser)
+    board.place_a_ship("A1", "A3", cruiser)
+    # board.place_a_ship(cruiser)
+    assert board.space_array[0][0].occupied
+    assert board.space_array[0][1].occupied
+    assert board.space_array[0][2].occupied
+  end
 
-    assert board.unique_space_id[0][0].occupied
-    assert board.unique_space_id[0][1].occupied
-    assert board.unique_space_id[0][2].occupied
+  def test_the_vertical_placement_of_a_ship
+
+    board   = Board.new(4)
+    cruiser = Ship.new(3)
+
+    cruiser.ship_placement("A1", "C1")
+
+    assert_equal "A1", cruiser.head_of_ship
+    assert_equal "C1", cruiser.tail_of_ship
+
+    # board.place_a_ship(cruiser)
+    board.place_a_ship("A1", "C1", cruiser)
+
+    assert board.space_array[0][0].occupied
+    assert board.space_array[1][0].occupied
+    assert board.space_array[2][0].occupied
   end
 
 
